@@ -6,14 +6,18 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { PrifinaProvider } from "@prifina/hooks";
 
+import { ThemeProvider } from "@blend-ui/core";
+
 import LocalComponent from "./index.js";
 
 const node = document.getElementById("app");
 
 const App = (props) => (
-  <PrifinaProvider>
-    <LocalComponent {...props} />
-  </PrifinaProvider>
+  <ThemeProvider>
+    <PrifinaProvider>
+      <LocalComponent {...props} />
+    </PrifinaProvider>
+  </ThemeProvider>
 );
 
 ReactDOM.render(<App />, node);

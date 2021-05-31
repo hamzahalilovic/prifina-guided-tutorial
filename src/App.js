@@ -1,66 +1,97 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-import { ReactComponent as Logo } from "./assets/prifina.svg";
-//import Image from "./assets/fingerpori.png";
 
-import { usePrifina } from "@prifina/hooks";
-import Faker from "@prifina/faker";
+import { Flex, Box, Image, Text, Button } from "@blend-ui/core";
 
-const StyledBox = styled.div`
-  height: 100vh;
+import TourContainer from "./components/TourContainer";
 
-  padding: 50px;
-  background-color: ${(props) =>
-    props.colors ? props.colors.baseWhite : "#F5F8F7"};
-`;
-/*
-const StyledImg = styled.img`
-  border-radius: 50%;
-`;
-*/
-
-//28w 23h
-const svgWidth = "60px";
-const StyledSVG = styled(Logo)`
-  width: ${svgWidth};
-  height: calc(${svgWidth} * 23 / 28);
-`;
+import background1 from "./assets/background1.png";
+import background2 from "./assets/background2.png";
 
 export const App = () => {
-  const { currentUser, connector } = usePrifina({
-    connectors: [Faker],
-  });
-  console.log("Logged in user ", currentUser);
-  console.log(
-    "Faker module methods ",
-    connector({ name: "Faker", function: "getInfo" })
-  );
-  const user = connector({ name: "Faker", function: "getName" });
+  const StyledBackground = styled(Box)`
+    background-image: url(${background1});
 
-  console.log(currentUser, user);
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* opacity: 0.3; */
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    border: 1px solid #f5f8f7;
+  `;
+
+  const StyledBackground2 = styled(Box)`
+    background-image: url(${background2});
+
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* opacity: 0.3; */
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    border: 1px solid #f5f8f7;
+  `;
+
+  const StyledBox = styled(Box)`
+    border: 2px solid #00847a;
+    width: 749px;
+    height: 204px;
+    border-radius: 20px;
+  `;
+
+  const [step, setStep] = useState(0);
+
+  let stepProgress = 0;
+  switch (step) {
+    case 0:
+      stepProgress = 50;
+      break;
+    case 1:
+      stepProgress = 100;
+      break;
+    default:
+      stepProgress = 50;
+  }
 
   return (
-    <StyledBox role={"remote"}>
-      <div style={{ textAlign: "center" }}>
-        <StyledSVG />
-      </div>
-      {/*
-      <div style={{ textAlign: "center", marginTop: "10px" }}>
-        <StyledImg src={Image} width={"200px"} />
-      </div>
-      */}
-      <div
-        style={{
-          textAlign: "center",
-          marginTop: "10px",
-          fontSize: "36px",
-          fontWeight: "bold",
-          fontFamily: "Open Sans",
-        }}
-      >
-        Hello! {currentUser.name}
-      </div>
-      <div style={{ marginTop: "10px" }}>{JSON.stringify(user)}</div>
-    </StyledBox>
+    <>
+      {step === 0 && (
+        <StyledBackground background="red">
+          <Box style={{ position: "absolute", bottom: 30, left: 30 }}>
+            <TourContainer
+              title="Welcome, Johnny"
+              progress={33}
+              description="New to Prifina? This is the core-platform, a dashboard containing
+              your apps and more. Shall we give you a quick tour? It will only
+              take a minute or two."
+              onPrevious={() => {
+                setStep(0);
+              }}
+              onNext={() => {
+                setStep(1);
+              }}
+            />
+          </Box>
+        </StyledBackground>
+      )}
+      {step === 1 && (
+        <StyledBackground2>
+          <Box style={{ position: "absolute", bottom: 30, left: 30 }}>
+            <TourContainer
+              title="Apps"
+              progress={50}
+              description="Both native apps to the core-platform and third party apps you have downloaded will appear here."
+              onPrevious={() => {
+                setStep(0);
+              }}
+              onNext={() => {
+                setStep(1);
+              }}
+            />
+          </Box>
+        </StyledBackground2>
+      )}
+    </>
   );
 };

@@ -12,6 +12,7 @@
     "@babel/preset-env": "^7.12.13",
     "@babel/preset-react": "^7.12.13",
     "@babel/runtime": "^7.12.13",
+    "@blend-ui/core": "latest",
     "@prifina/faker": "latest",
     "@prifina/hooks": "latest",
     "@storybook/addon-actions": "^6.1.17",
@@ -54,5 +55,10 @@
     "react": "^17.0.1",
     "styled-components": "^5.2.1",
     "styled-system": "^5.1.5"
+  },
+  "dependencies": {
+    "@blend-ui/progress": "^1.0.7-alpha.0",
+    "@styled-system/prop-types": "^5.1.5",
+    "@styled-system/theme-get": "^5.1.2"
   }
 }

@@ -32,6 +32,8 @@ const App = () => {
     background-repeat: no-repeat;
     background-size: cover;
     /* opacity: 0.3; */
+    transition: background 150ms ease-out, border 150ms ease-out,
+      transform 150ms ease-out;
   `;
 
   const [step, setStep] = useState(0);

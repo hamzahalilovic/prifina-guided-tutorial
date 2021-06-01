@@ -81,10 +81,15 @@ const TourContainer = ({
                 End Tour
               </Button>
               <Flex>
-                <Button variation="outline" size="xs" onClick={onPrevious}>
+                <Button
+                  variation="outline"
+                  fontSize="12px"
+                  size="xs"
+                  onClick={onPrevious}
+                >
                   Back
                 </Button>
-                <Button size="xs" onClick={onNext} ml="8px">
+                <Button size="xs" fontSize="12px" onClick={onNext} ml="8px">
                   Next
                 </Button>
               </Flex>

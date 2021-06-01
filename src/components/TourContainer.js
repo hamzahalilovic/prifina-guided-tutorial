@@ -6,7 +6,7 @@ import { CircularProgress, CircularProgressLabel } from "@blend-ui/progress";
 
 import { ReactComponent as PrifinaLogo } from "../assets/prifina.svg";
 
-import tutorialIntro from "../assets/intro.png";
+import intro from "../assets/intro.png";
 
 const TourContainer = ({
   onPrevious,
@@ -14,54 +14,89 @@ const TourContainer = ({
   progress,
   title,
   description,
+  src,
+  value,
+  button1,
+  button2,
+  onEndTour,
+  endTourButton,
 }) => {
   const StyledBox = styled(Box)`
     border: 2px solid #00847a;
-    width: 749px;
-    height: 204px;
     border-radius: 20px;
-
     display: flex;
   `;
 
   return (
     <>
-      <StyledBox background="#F5F8F7">
-        <Box
-          width="100%"
-          style={{
-            position: "absolute",
-            right: -726,
-            top: -25,
-          }}
-        >
-          <CircularProgress value={progress} size={46}>
-            <CircularProgressLabel>
-              <PrifinaLogo />
-            </CircularProgressLabel>
-          </CircularProgress>
-        </Box>
-        <Box
-          width="100%"
+      <StyledBox background="#F5F8F7" justifyContent="flex-start" width="749px">
+        {progress ? (
+          <Box
+            width="100%"
+            style={{
+              position: "absolute",
+              right: -726,
+              top: -25,
+            }}
+          >
+            <CircularProgress value={value} size={46}>
+              <CircularProgressLabel>
+                <PrifinaLogo />
+              </CircularProgressLabel>
+            </CircularProgress>
+          </Box>
+        ) : null}
+        <Flex
           background="#D9EAE8"
           borderTopLeftRadius="20px"
           borderBottomLeftRadius="20px"
+          paddingTop="24px"
+          paddingBottom="24px"
+          paddingRight="46px"
+          paddingLeft="46px"
         >
-          <Image src={tutorialIntro} />
-        </Box>
+          <Image src={src} style={{ maxWidth: 200 }} />
+        </Flex>
         <Box ml={36} mt={20} mr={36}>
-          <Text fontSize={18} bold>
-            {title}
-          </Text>
-          <Box mt={12}>
+          <Box mb={12}>
+            <Text fontSize={18} bold>
+              {title}
+            </Text>
+          </Box>
+          <Box mb={26}>
             <Text fontSize={16}>{description}</Text>
           </Box>
-          <Flex mt={26} justifyContent="space-between">
-            <Button variation="outline" onClick={onPrevious}>
-              No, thanks
-            </Button>
-            <Button onClick={onNext}>Let's go</Button>
-          </Flex>
+          {endTourButton ? (
+            <Flex mb={20} justifyContent="space-between">
+              <Button
+                style={{
+                  background: "transparent",
+                  color: "grey",
+                  border: 0,
+                  padding: 0,
+                  display: "flex",
+                }}
+                onClick={onEndTour}
+              >
+                End Tour
+              </Button>
+              <Flex>
+                <Button variation="outline" size="xs" onClick={onPrevious}>
+                  Back
+                </Button>
+                <Button size="xs" onClick={onNext} ml="8px">
+                  Next
+                </Button>
+              </Flex>
+            </Flex>
+          ) : (
+            <Flex mb={20} justifyContent="space-between">
+              <Button variation="outline" onClick={onPrevious}>
+                {button1}
+              </Button>
+              <Button onClick={onNext}>{button2}</Button>
+            </Flex>
+          )}
         </Box>
       </StyledBox>
     </>

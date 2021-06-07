@@ -7,7 +7,10 @@ import { Box } from "@blend-ui/core";
 
 import TourContainer from "./components/TourContainer";
 
-import { CSSTransition, TransitionGroup } from "react-transition-group";
+import Image from "./components/Image";
+
+import RenderSmoothImage from "render-smooth-image-react";
+import "render-smooth-image-react/build/style.css";
 
 import intro from "./assets/intro.svg";
 import apps from "./assets/apps.gif";
@@ -27,7 +30,6 @@ import backgroundAppMarket from "./assets/backgroundAppMarket.png";
 import backgroundUserMenu from "./assets/backgroundUserMenu.png";
 import backgroundLast from "./assets/backgroundLast.png";
 import backgroundDefault from "./assets/backgroundDefault.png";
-import { height, size, width } from "styled-system";
 
 const App = () => {
   const StyledBackground = styled(Box)`
@@ -37,7 +39,6 @@ const App = () => {
   `;
 
   const [step, setStep] = useState(0);
-  const [state, setState] = useState(true);
 
   let stepProgress = 0;
   let stepValue = 100 / 7;
@@ -98,39 +99,46 @@ const App = () => {
   return (
     <>
       {step === 0 && (
-        <TransitionGroup>
-          <CSSTransition key={step} timeout={450} classNames="fade">
-            <StyledBackground>
+        <StyledBackground>
+          <Image src={backgroundIntro} />
+          {/* <RenderSmoothImage
+            src={backgroundIntro}
+            alt="alternate-text"
+            // width="100%"
+            // width={useWindowSize()}
+            height={useWindowSize()}
+          /> */}
+          {/* 
               <img
                 src={backgroundIntro}
                 // width={useWindowSize()}
                 width="100%"
                 height={useWindowSize()}
-              />
-              <Box style={{ position: "absolute", bottom: 30, left: 30 }}>
-                <TourContainer
-                  src={intro}
-                  title="Welcome, Johnny"
-                  description="New to Prifina? This is the core-platform, a dashboard containing
+              /> */}
+          <Box style={{ position: "absolute", bottom: 30, left: 30 }}>
+            <TourContainer
+              src={intro}
+              title="Welcome, Johnny"
+              description="New to Prifina? This is the core-platform, a dashboard containing
               your apps and more. Shall we give you a quick tour? It will only
               take a minute or two."
-                  onPrevious={() => {
-                    setStep(8);
-                  }}
-                  onNext={() => {
-                    setStep(1);
-                  }}
-                  button1="No, thanks"
-                  button2="Let’s go"
-                />
-              </Box>
-            </StyledBackground>
-          </CSSTransition>
-        </TransitionGroup>
+              onPrevious={() => {
+                setStep(8);
+              }}
+              onNext={() => {
+                setStep(1);
+              }}
+              button1="No, thanks"
+              button2="Let’s go"
+            />
+          </Box>
+        </StyledBackground>
       )}
       {step === 1 && (
         <StyledBackground>
-          <img src={backgroundApps} width="100%" height={useWindowSize()} />
+          {/* <img src={backgroundApps} width="100%" height={useWindowSize()} /> */}
+          <Image src={backgroundApps} />
+
           <Box style={{ position: "absolute", bottom: 30, left: 30 }}>
             <TourContainer
               src={apps}
@@ -154,7 +162,9 @@ const App = () => {
       )}
       {step === 2 && (
         <StyledBackground>
-          <img src={backgroundDisplay} width="100%" height={useWindowSize()} />
+          {/* <img src={backgroundDisplay} width="100%" height={useWindowSize()} /> */}
+          <Image src={backgroundDisplay} />
+
           <Box style={{ position: "absolute", bottom: 30, left: 30 }}>
             <TourContainer
               src={display}

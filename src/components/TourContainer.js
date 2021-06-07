@@ -6,8 +6,6 @@ import { CircularProgress, CircularProgressLabel } from "@blend-ui/progress";
 
 import { ReactComponent as PrifinaLogo } from "../assets/prifina.svg";
 
-import intro from "../assets/intro.png";
-
 const TourContainer = ({
   onPrevious,
   onNext,

@@ -7,13 +7,15 @@ import { Box } from "@blend-ui/core";
 
 import TourContainer from "./components/TourContainer";
 
+import { CSSTransition, TransitionGroup } from "react-transition-group";
+
 import intro from "./assets/intro.svg";
-import apps from "./assets/apps.png";
-import display from "./assets/display.png";
-import dataCloud from "./assets/dataCloud.png";
-import settings from "./assets/settings.png";
-import appMarket from "./assets/appMarket.png";
-import userMenu from "./assets/userMenu.png";
+import apps from "./assets/apps.gif";
+import display from "./assets/display.gif";
+import dataCloud from "./assets/data-cloud.gif";
+import settings from "./assets/settings.gif";
+import appMarket from "./assets/app-market.gif";
+import userMenu from "./assets/side-menu.gif";
 import last from "./assets/last.svg";
 
 import backgroundIntro from "./assets/backgroundIntro.png";
@@ -32,11 +34,10 @@ const App = () => {
     background-repeat: no-repeat;
     background-size: cover;
     /* opacity: 0.3; */
-    transition: background 150ms ease-out, border 150ms ease-out,
-      transform 150ms ease-out;
   `;
 
   const [step, setStep] = useState(0);
+  const [state, setState] = useState(true);
 
   let stepProgress = 0;
   let stepValue = 100 / 7;
@@ -97,31 +98,35 @@ const App = () => {
   return (
     <>
       {step === 0 && (
-        <StyledBackground>
-          <img
-            src={backgroundIntro}
-            // width={useWindowSize()}
-            width="100%"
-            height={useWindowSize()}
-          />
-          <Box style={{ position: "absolute", bottom: 30, left: 30 }}>
-            <TourContainer
-              src={intro}
-              title="Welcome, Johnny"
-              description="New to Prifina? This is the core-platform, a dashboard containing
+        <TransitionGroup>
+          <CSSTransition key={step} timeout={450} classNames="fade">
+            <StyledBackground>
+              <img
+                src={backgroundIntro}
+                // width={useWindowSize()}
+                width="100%"
+                height={useWindowSize()}
+              />
+              <Box style={{ position: "absolute", bottom: 30, left: 30 }}>
+                <TourContainer
+                  src={intro}
+                  title="Welcome, Johnny"
+                  description="New to Prifina? This is the core-platform, a dashboard containing
               your apps and more. Shall we give you a quick tour? It will only
               take a minute or two."
-              onPrevious={() => {
-                setStep(8);
-              }}
-              onNext={() => {
-                setStep(1);
-              }}
-              button1="No, thanks"
-              button2="Let’s go"
-            />
-          </Box>
-        </StyledBackground>
+                  onPrevious={() => {
+                    setStep(8);
+                  }}
+                  onNext={() => {
+                    setStep(1);
+                  }}
+                  button1="No, thanks"
+                  button2="Let’s go"
+                />
+              </Box>
+            </StyledBackground>
+          </CSSTransition>
+        </TransitionGroup>
       )}
       {step === 1 && (
         <StyledBackground>

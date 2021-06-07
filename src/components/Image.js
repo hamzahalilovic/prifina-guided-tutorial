@@ -29,8 +29,8 @@ const Image = ({ src }) => {
     return windowSize;
   }
   return (
-    <div style={{ width: "100%", height: useWindowSize() }}>
-      <RenderSmoothImage src={src} alt="alternate-text" />
+    <div style={{ height: useWindowSize() }}>
+      <RenderSmoothImage src={src} />
     </div>
   );
 };

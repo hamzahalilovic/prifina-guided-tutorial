@@ -188,11 +188,13 @@ const App = () => {
       )}
       {step === 3 && (
         <StyledBackground>
-          <img
+          <Image src={backgroundDataCloud} />
+
+          {/* <img
             src={backgroundDataCloud}
             width="100%"
             height={useWindowSize()}
-          />
+          /> */}
           <Box style={{ position: "absolute", bottom: 30, left: 30 }}>
             <TourContainer
               src={dataCloud}
@@ -216,7 +218,9 @@ const App = () => {
       )}
       {step === 4 && (
         <StyledBackground>
-          <img src={backgroundSettings} width="100%" height={useWindowSize()} />
+          <Image src={backgroundSettings} />
+
+          {/* <img src={backgroundSettings} width="100%" height={useWindowSize()} /> */}
           <Box style={{ position: "absolute", bottom: 30, left: 30 }}>
             <TourContainer
               src={settings}
@@ -240,11 +244,13 @@ const App = () => {
       )}
       {step === 5 && (
         <StyledBackground>
-          <img
+          <Image src={backgroundAppMarket} />
+
+          {/* <img
             src={backgroundAppMarket}
             width="100%"
             height={useWindowSize()}
-          />
+          /> */}
           <Box style={{ position: "absolute", bottom: 30, left: 30 }}>
             <TourContainer
               src={appMarket}
@@ -268,7 +274,9 @@ const App = () => {
       )}
       {step === 6 && (
         <StyledBackground>
-          <img src={backgroundUserMenu} width="100%" height={useWindowSize()} />
+          <Image src={backgroundUserMenu} />
+
+          {/* <img src={backgroundUserMenu} width="100%" height={useWindowSize()} /> */}
           <Box style={{ position: "absolute", bottom: 30, left: 30 }}>
             <TourContainer
               src={userMenu}
@@ -292,7 +300,9 @@ const App = () => {
       )}
       {step === 7 && (
         <StyledBackground>
-          <img src={backgroundLast} width="100%" height={useWindowSize()} />
+          <Image src={backgroundLast} />
+
+          {/* <img src={backgroundLast} width="100%" height={useWindowSize()} /> */}
           <Box style={{ position: "absolute", bottom: 30, left: 30 }}>
             <TourContainer
               src={last}
@@ -314,7 +324,9 @@ const App = () => {
       )}
       {step === 8 && (
         <StyledBackground>
-          <img src={backgroundDefault} width="100%" height={useWindowSize()} />
+          <Image src={backgroundDefault} />
+
+          {/* <img src={backgroundDefault} width="100%" height={useWindowSize()} /> */}
           <Box style={{ position: "absolute", bottom: 30, left: 30 }}></Box>
         </StyledBackground>
       )}
